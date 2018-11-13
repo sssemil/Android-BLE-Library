@@ -23,13 +23,13 @@ project. It contains classes useful when doing a connection to a Bluetooth LE de
 11. Error handling
 12. Logging (in LogCat and optionally nRF Logger)
 
-It may be used for a single connection (see [nRF Toolbox](https://github.com/NordicSemiconductor/Android-nRF-Toolbox) -> RSC profile) 
-or when multiple connections are required (see nRF Toolbox -> Proximity profile), 
-from a Service (see nRF Toolbox -> RSC profile), 
+It may be used for a single connection (see [nRF Toolbox](https://github.com/NordicSemiconductor/Android-nRF-Toolbox) -> RSC profile)
+or when multiple connections are required (see nRF Toolbox -> Proximity profile),
+from a Service (see nRF Toolbox -> RSC profile),
 ViewModel's repo (see [Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html) and [nRF Blinky](https://github.com/NordicSemiconductor/Android-nRF-Blinky)),
 or as a singleton (not recommended, see nRF Toolbox -> HRM).
 
-**BleManager** exposes a high level API, much more readable then the low level BLE operations. 
+**BleManager** exposes a high level API, much more readable then the low level BLE operations.
 If autoConnect option is to be used, the manager also handles initial connection (with autoConnect = false),
 which is much faster, and then reconnects in case of link loss with this parameter set to true.
 Just return *true* from `shouldAutoConnect()` method in your manager.
@@ -37,7 +37,7 @@ Just return *true* from `shouldAutoConnect()` method in your manager.
 ### Version 2.x
 
 This library is now in alpha stage. It has been tested in several projects and no issues were found so far.
-Feedback is highly appreciated. 
+Feedback is highly appreciated.
 
 Version 2 has many more features comparing to 1.x:
 1. Support for synchronous operations.
@@ -98,12 +98,12 @@ See changes in [Android nRF Toolbox](https://github.com/NordicSemiconductor/Andr
 Remember to call `.enqueue()` method for asynchronous operations!
 
 2. Move your callback implementation from BleManagerGattCallback to request callbacks.
-3. To split logic from parsing, we recomend to extend DataReceivedCallback interface in a class where your parse your data, and return higher-level values. For a sample, check out nRF Toolbox and [Android BLE Common Library](https://github.com/NordicSemiconductor/Android-BLE-Common-Library/). If you are depending on a SIG adopted profile, like Heart Rate Monitor, Proximity, etc., feel free to include the BLE Common Library in your project. It has all the parsers implemented. If your profile isn't there, we are happy to accept PRs. 
+3. To split logic from parsing, we recomend to extend DataReceivedCallback interface in a class where your parse your data, and return higher-level values. For a sample, check out nRF Toolbox and [Android BLE Common Library](https://github.com/NordicSemiconductor/Android-BLE-Common-Library/). If you are depending on a SIG adopted profile, like Heart Rate Monitor, Proximity, etc., feel free to include the BLE Common Library in your project. It has all the parsers implemented. If your profile isn't there, we are happy to accept PRs.
 4. Since version 2.0-alpha2 the `connect()` and `disconnect()` methods also require calling `.enqueue()` in asynchronous use.
 
 #### How to test it:
 
-The new version is compatible with [nRF Toolbox](https://github.com/NordicSemiconductor/Android-nRF-Toolbox) 
+The new version is compatible with [nRF Toolbox](https://github.com/NordicSemiconductor/Android-nRF-Toolbox)
 and [BLE Common Library](https://github.com/NordicSemiconductor/Android-BLE-Common-Library). The latter one is a set of useful parsers and callbacks for common Bluetooth SIG adopted profiles.
 
 The libraries are available on jcenter, but if you need to make some changes, clone all 3 projects, check out *develop* branches on each of them, ensure the path to *:ble* and *:ble-common* modules are correct in *settings.gradle* file, and sync the project.
